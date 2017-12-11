@@ -2,7 +2,7 @@
 
 See example.py for an example using the more advanced StatefulBrowser."""
 import argparse
-import mechanicalsoup
+import vsoup
 
 parser = argparse.ArgumentParser(description="Login to GitHub.")
 parser.add_argument("username")

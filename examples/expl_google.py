@@ -1,8 +1,8 @@
 import re
-import mechanicalsoup
+import vsoup
 
 # Connect to Google
-browser = mechanicalsoup.StatefulBrowser()
+browser = vsoup.WebBrowser.New("Chrome on Windows")
 browser.open("https://www.google.com/")
 
 # Fill-in the form

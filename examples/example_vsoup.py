@@ -11,17 +11,14 @@ args = parser.parse_args()
 
 args.password = getpass("Please enter your GitHub password: ")
 
-browser = vsoup.StatefulBrowser(
-    soup_config={'features': 'lxml'},
-    raise_on_404=True,
-    user_agent='MyBot/0.1: mysite.example.com/bot_info',
-)
+browser = WebBrowser.New("Safari on Mac")
+
 # Uncomment for a more verbose output:
 # browser.set_verbose(2)
 
 browser.open("https://github.com")
-browser.follow_link("login")
-browser.select_form('#login form')
+browser.follow_login_link()
+browser.select_login_form()
 browser["login"] = args.username
 browser["password"] = args.password
 resp = browser.submit_selected()

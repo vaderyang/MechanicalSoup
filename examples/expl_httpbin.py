@@ -1,6 +1,6 @@
-import mechanicalsoup
+import vsoup
 
-browser = mechanicalsoup.StatefulBrowser()
+browser = vsoup.StatefulBrowser()
 browser.open("http://httpbin.org/")
 
 print(browser.get_url())

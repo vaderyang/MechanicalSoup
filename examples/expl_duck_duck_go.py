@@ -1,10 +1,10 @@
 """Example usage of MechanicalSoup to get the results from
 DuckDuckGo."""
 
-import mechanicalsoup
+import vsoup
 
 # Connect to duckduckgo
-browser = mechanicalsoup.StatefulBrowser()
+browser = vsoup.StatefulBrowser()
 browser.open("https://duckduckgo.com/")
 
 # Fill-in the search form

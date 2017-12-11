@@ -32,7 +32,7 @@ class _BrowserState:
 class StatefulBrowser(Browser):
     """An extension of :class:`Browser` that stores the browser's state
     and provides many convenient functions for interacting with HTML elements.
-    It is the primary tool in MechanicalSoup for interfacing with websites.
+    It is the primary tool in VSoup for interfacing with websites.
 
     :param session: Attach a pre-existing requests Session instead of
         constructing a new one.
@@ -53,7 +53,7 @@ class StatefulBrowser(Browser):
 
     Examples ::
 
-        browser = mechanicalsoup.StatefulBrowser(
+        browser = VSoup.StatefulBrowser(
             soup_config={'features': 'lxml'},  # Use the lxml HTML parser
             raise_on_404=True,
             user_agent='MyBot/0.1: mysite.example.com/bot_info',
@@ -163,7 +163,7 @@ class StatefulBrowser(Browser):
         visited page.
         """
         return self.open(self.absolute_url(url), *args, **kwargs)
-    def get_login_form(self):
+    def select_login_form(self):
         """Select a form which is likely to be a login form automaticlly.
            Vader
         """

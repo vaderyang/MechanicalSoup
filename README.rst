@@ -1,8 +1,9 @@
-MechanicalSoup
+VSoup
 ==============
 
 Home page
 ---------
+Based on Mechnicalsoup
 
 https://mechanicalsoup.readthedocs.io/
 
@@ -14,20 +15,7 @@ MechanicalSoup automatically stores and sends cookies, follows
 redirects, and can follow links and submit forms. It doesn't do
 JavaScript.
 
-MechanicalSoup was created by `M Hickford
-<https://github.com/hickford/>`__, who was a fond user of the
-`Mechanize <https://github.com/jjlee/mechanize>`__ library.
-Unfortunately, Mechanize is `incompatible with Python 3
-<https://github.com/jjlee/mechanize/issues/96>`__ and its development
-stalled for several years. MechanicalSoup provides a similar API, built on Python
-giants `Requests <http://docs.python-requests.org/en/latest/>`__ (for
-HTTP sessions) and `BeautifulSoup
-<https://www.crummy.com/software/BeautifulSoup/>`__ (for document
-navigation). Since 2017 it is a project actively maintained by a small
-team including `@hemberger <https://github.com/hemberger>`__ and `@moy
-<https://github.com/moy/>`__.
-
-|Gitter Chat|
+Based on Mechnicalsoup, I added more simple facilities for my own use.
 
 Installation
 ------------
@@ -36,13 +24,10 @@ Installation
 
 PyPy and PyPy3 are also supported (and tested against).
 
-Download and install the latest released version from `PyPI <https://pypi.python.org/pypi/MechanicalSoup/>`__::
-
-  pip install MechanicalSoup
 
 Download and install the development version from `GitHub <https://github.com/MechanicalSoup/MechanicalSoup>`__::
 
-  pip install git+https://github.com/MechanicalSoup/MechanicalSoup
+  pip install git+https://github.com/vaderyang/Vsoup
 
 Installing from source (installs the version in the current working directory)::
 
@@ -55,7 +40,7 @@ install in the current user's home directory.)
 Documentation
 -------------
 
-The full documentation is available on
+The basic usage documentation is the same as mechnicalsoup which can be found at
 https://mechanicalsoup.readthedocs.io/. You may want to jump directly to
 the `automatically generated API
 documentation <https://mechanicalsoup.readthedocs.io/en/latest/mechanicalsoup.html>`__.
@@ -68,13 +53,13 @@ a DuckDuckGo search:
 
 .. code:: python
 
-    """Example usage of MechanicalSoup to get the results from
+    """Example usage of Vsoup to get the results from
     DuckDuckGo."""
 
-    import mechanicalsoup
+    import vsoup
 
     # Connect to duckduckgo
-    browser = mechanicalsoup.StatefulBrowser()
+    browser = vsoup.StatefulBrowser()
     browser.open("https://duckduckgo.com/")
 
     # Fill-in the search form
@@ -99,29 +84,5 @@ Development
 |Requirements Status| |Documentation Status|
 |CII Best Practices|
 
-Instructions for building, testing and contributing to MechanicalSoup:
+Instructions for building, testing and contributing to VSoup:
 see `<CONTRIBUTING.rst>`__.
-
-Common problems
----------------
-
-Read the `FAQ
-<https://mechanicalsoup.readthedocs.io/en/latest/faq.html>`__.
-
-
-.. |Latest Version| image:: https://img.shields.io/pypi/v/MechanicalSoup.svg
-   :target: https://pypi.python.org/pypi/MechanicalSoup/
-.. |Supported Versions| image:: https://img.shields.io/pypi/pyversions/mechanicalsoup.svg
-   :target: https://pypi.python.org/pypi/MechanicalSoup/
-.. |Build Status| image:: https://travis-ci.org/MechanicalSoup/MechanicalSoup.svg?branch=master
-   :target: https://travis-ci.org/MechanicalSoup/MechanicalSoup
-.. |Coverage Status| image:: https://codecov.io/gh/MechanicalSoup/MechanicalSoup/branch/master/graph/badge.svg
-   :target: https://codecov.io/gh/MechanicalSoup/MechanicalSoup
-.. |Requirements Status| image:: https://requires.io/github/MechanicalSoup/MechanicalSoup/requirements.svg?branch=master
-   :target: https://requires.io/github/MechanicalSoup/MechanicalSoup/requirements/?branch=master
-.. |Documentation Status| image:: https://readthedocs.org/projects/mechanicalsoup/badge/?version=latest
-   :target: https://mechanicalsoup.readthedocs.io/en/latest/?badge=latest
-.. |CII Best Practices| image:: https://bestpractices.coreinfrastructure.org/projects/1334/badge
-   :target: https://bestpractices.coreinfrastructure.org/projects/1334)
-.. |Gitter Chat| image:: https://badges.gitter.im/MechanicalSoup/MechanicalSoup.svg
-   :target: https://gitter.im/MechanicalSoup/Lobby

@@ -1,3 +1,4 @@
+#!-encoding=utf8
 from __future__ import print_function
 
 from six.moves import urllib
@@ -7,6 +8,18 @@ from .form import Form
 import sys
 import re
 import bs4
+
+AGENTS = {
+    "Safari on Mac":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/604.3.5 (KHTML, like Gecko) Version/11.0.1 Safari/604.3.5",
+    "Chrome on Windows":"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36",
+    "GoogleBot":"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "BaiduSpider":"Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)",
+    "Firefox on Windows":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1",
+    "Wechat on iPhone":"mozilla/5.0 (iphone; cpu iphone os 5_1_1 like mac os x) applewebkit/534.46 (khtml, like gecko) mobile/9b206 micromessenger/5.0",
+    "Wechat on Android":"mozilla/5.0 (linux; u; android 4.1.2; zh-cn; mi-one plus build/jzo54k) applewebkit/534.30 (khtml, like gecko) version/4.0 mobile safari/534.30 micromessenger/5.0.1.352",
+    "vsoup":'MyBot/0.1: mysite.example.com/bot_info',
+    "iPhone": "Mozilla/5.0 (iPhone; CPU iPhone OS 10_2_1 like Mac OS X) AppleWebKit/602.4.6 (KHTML, like Gecko) Version/10.0 Mobile/14D27 Safari/602.1",
+}
 
 
 class _BrowserState:
@@ -150,6 +163,26 @@ class StatefulBrowser(Browser):
         visited page.
         """
         return self.open(self.absolute_url(url), *args, **kwargs)
+    def get_login_form(self):
+        """Select a form which is likely to be a login form automaticlly.
+           Vader
+        """
+        currentForm = None
+        found_forms = self.get_current_page().select("form")
+        if found_forms!=None:
+            for form in found_forms:
+                #in the future will add score feature
+                if form.text.find("sername") > 0 or form.text.find("assword") >0 or form.text.find("Sign in")  :
+                    currentForm = form
+                    break
+                if form.text.find("用户名") > 0 or form.text.find("密码") >0 or form.text.find("登")  :
+                    currentForm = form
+                    break
+        else:
+            currentForm = None
+
+        return Form(currentForm)
+
 
     def select_form(self, selector="form", nr=0):
         """Select a form in the current page.
@@ -236,6 +269,21 @@ class StatefulBrowser(Browser):
             raise LinkNotFoundError()
         else:
             return links[0]
+    def follow_login_link(self):
+    
+        try:
+            links = self.links("login")
+            for l in links:
+                #future will be scoring
+                link = l
+                break
+        except LinkNotFoundError:
+            if self.get_debug():
+                print('follow_login_link failed for', link)
+                self.list_links()
+                self.launch_browser()
+            raise
+        return self.open_relative(link['href'])
 
     def follow_link(self, link=None, *args, **kwargs):
         """Follow a link.
@@ -272,4 +320,26 @@ class StatefulBrowser(Browser):
         """
         if soup is None:
             soup = self.get_current_page()
-        super(StatefulBrowser, self).launch_browser(soup)
+        super(StatefulBrowser, self).launch_browser(soup)         
+
+    def set_browser(self,browsertype="vsoup"):
+
+        user_agent = AGENTS.get(browsertype)
+        
+        if user_agent == None:
+            user_agent = AGENTS["vsoup"]
+        self.set_user_agent(user_agent) 
+
+
+class WebBrowser(object):
+    @staticmethod
+    def New(typestr="vsoup"):
+        user_agent = AGENTS.get(typestr)
+        if user_agent == None:
+            user_agent = AGENTS["vsoup"] 
+        return StatefulBrowser(
+            soup_config={'features': 'lxml'},
+            raise_on_404=True,
+            user_agent=user_agent)
+
+

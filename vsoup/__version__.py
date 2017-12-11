@@ -1,0 +1,6 @@
+__title__ = 'VSoup'
+__description__ = 'A Python library for automating interaction with websites'
+__url__ = 'https://vsoup.readthedocs.io/'
+__github_url__ = 'https://github.com/vaderyang/VSoup'
+__version__ = '1.0.0-dev'
+__license__ = 'MIT'

@@ -1,4 +1,4 @@
-import mechanicalsoup
+import vsoup
 import requests_mock
 try:
     from urllib.parse import parse_qsl

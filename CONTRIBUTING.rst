@@ -19,12 +19,6 @@ Hints on Development
 |Requirements Status| |Documentation Status|
 |CII Best Practices|
 
-Python version support in the current master branch may differ from the
-latest release in
-`PyPI <https://pypi.python.org/pypi/MechanicalSoup/>`__. Please inspect
-``.travis.yml`` or run ``python setup.py --classifiers`` to see which
-versions of Python are supported in the current master branch.
-
 Installing dependencies and running tests can be done with:
 
 ::
@@ -83,13 +77,13 @@ At each release:
 
 - Make sure all changes are documented in ``docs/ChangeLog.rst``
 - Update the version number to $v in
-  ``mechanicalsoup/__version__.py``
+  ``vsoup/__version__.py``
 - Remove the ``(in development)`` mention in ``docs/ChangeLog.rst``.
 - git commit -m "Release $v"
 - git tag v$ver
 - git push origin master v$v
 - Visit the `release page on GitHub
-  <https://github.com/MechanicalSoup/MechanicalSoup/releases>`__, copy
+  <https://github.com/vaderyang/VSoup/releases>`__, copy
   the relevant section from ``docs/ChangeLog.rst`` to the release
   page.
 - ``python setup.py sdist upload -r pypi`` or ``twine upload``. This
@@ -103,23 +97,9 @@ At each release:
     username:<user>
     password:<password>
 
-- Check on https://pypi.python.org/pypi/MechanicalSoup/, and verify
-  installation from PyPI with `pip install --no-cache-dir mechanicalsoup`.
-
 Right after the release:
 
 - Update the version number to a ``x.y.z-dev`` number in
-  ``mechanicalsoup/__version__.py``
+  ``vsoup/__version__.py``
 - Create the ``(in development)`` section in ``docs/ChangeLog.rst``.
 - ``git commit -m "Prepare for next release" && git push``
-
-.. |Build Status| image:: https://travis-ci.org/MechanicalSoup/MechanicalSoup.svg?branch=master
-   :target: https://travis-ci.org/MechanicalSoup/MechanicalSoup
-.. |Coverage Status| image:: https://codecov.io/gh/MechanicalSoup/MechanicalSoup/branch/master/graph/badge.svg
-   :target: https://codecov.io/gh/MechanicalSoup/MechanicalSoup
-.. |Requirements Status| image:: https://requires.io/github/MechanicalSoup/MechanicalSoup/requirements.svg?branch=master
-   :target: https://requires.io/github/MechanicalSoup/MechanicalSoup/requirements/?branch=master
-.. |Documentation Status| image:: https://readthedocs.org/projects/mechanicalsoup/badge/?version=latest
-   :target: https://mechanicalsoup.readthedocs.io/en/latest/?badge=latest
-.. |CII Best Practices| image:: https://bestpractices.coreinfrastructure.org/projects/1334/badge
-   :target: https://bestpractices.coreinfrastructure.org/projects/1334)

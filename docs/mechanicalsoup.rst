@@ -1,7 +1,7 @@
 The mechanicalsoup package: API documentation
 =============================================
 
-.. module:: mechanicalsoup
+.. module:: vsoup
 
 StatefulBrowser
 ---------------

@@ -26,7 +26,7 @@ def read(fname, URL):
 here = path.abspath(path.dirname(__file__))
 
 about = {}
-with open(path.join(here, 'mechanicalsoup', '__version__.py'),
+with open(path.join(here, 'vsouop', '__version__.py'),
           'r', 'utf-8') as f:
     exec(f.read(), about)
 
@@ -55,7 +55,7 @@ setup(
         'Programming Language :: Python :: 3.6',
     ],
 
-    packages=['mechanicalsoup'],
+    packages=['vsoup'],
 
     # List run-time dependencies here. These will be installed by pip
     # when your project is installed. For an analysis of

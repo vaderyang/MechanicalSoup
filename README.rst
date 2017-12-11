@@ -3,15 +3,18 @@ VSoup
 
 Home page
 ---------
-Based on Mechnicalsoup
+This is a customized version based on Mechnicalsoup which design to fulfill my personal needs
 
+please ref
 https://mechanicalsoup.readthedocs.io/
+
+or go to github.com to find mechanicalsoup to get the original one.
 
 Overview
 --------
 
 A Python library for automating interaction with websites.
-MechanicalSoup automatically stores and sends cookies, follows
+VSoup automatically stores and sends cookies, follows
 redirects, and can follow links and submit forms. It doesn't do
 JavaScript.
 
@@ -25,7 +28,7 @@ Installation
 PyPy and PyPy3 are also supported (and tested against).
 
 
-Download and install the development version from `GitHub <https://github.com/MechanicalSoup/MechanicalSoup>`__::
+Download and install the development version from `GitHub <https://github.com/vaderyang/Vsoup>`__::
 
   pip install git+https://github.com/vaderyang/Vsoup
 

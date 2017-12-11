@@ -1,5 +1,5 @@
 import setpath  # noqa:F401, must come before 'import mechanicalsoup'
-import mechanicalsoup
+import vsoup
 from utils import setup_mock_browser
 import sys
 import pytest
@@ -7,9 +7,9 @@ import pytest
 
 def test_submit_online(httpbin):
     """Complete and submit the pizza form at http://httpbin.org/forms/post """
-    browser = mechanicalsoup.Browser()
+    browser = vsoup.Browser()
     page = browser.get(httpbin + "/forms/post")
-    form = mechanicalsoup.Form(page.soup.form)
+    form = vsoup.Form(page.soup.form)
 
     input_data = {"custname": "Philip J. Fry"}
     form.input(input_data)

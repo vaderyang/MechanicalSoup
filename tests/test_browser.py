@@ -1,5 +1,5 @@
-import setpath  # noqa:F401, must come before 'import mechanicalsoup'
-import mechanicalsoup
+import setpath  # noqa:F401, must come before 'import vsoup'
+import vsoup
 import sys
 from bs4 import BeautifulSoup
 import tempfile
@@ -9,7 +9,7 @@ import pytest
 
 def test_submit_online(httpbin):
     """Complete and submit the pizza form at http://httpbin.org/forms/post """
-    browser = mechanicalsoup.Browser()
+    browser = vsoup.Browser()
     page = browser.get(httpbin + "/forms/post")
     form = page.soup.form
 

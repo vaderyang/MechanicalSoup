@@ -1,6 +1,6 @@
 import tempfile
 import setpath  # noqa:F401, must come before 'import mechanicalsoup'
-import mechanicalsoup
+import vsoup
 import sys
 import re
 from bs4 import BeautifulSoup
@@ -19,7 +19,7 @@ def test_request_forward():
 
 def test_submit_online(httpbin):
     """Complete and submit the pizza form at http://httpbin.org/forms/post """
-    browser = mechanicalsoup.StatefulBrowser()
+    browser = vsoup.StatefulBrowser()
     browser.set_user_agent('testing MechanicalSoup')
     browser.open(httpbin.url)
     for link in browser.links():

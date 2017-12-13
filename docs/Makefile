@@ -50,7 +50,7 @@ help:
 # Create a list of modules with the proper .. automodule:: directive.
 # Use --no-toc to avoid creating a list containing only one module.
 apidoc:
-	sphinx-apidoc --no-toc -o . ../mechanicalsoup
+	sphinx-apidoc --no-toc -o . ../vsoup
 
 clean:
 	rm -rf $(BUILDDIR)/*
@@ -91,17 +91,17 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/MechanicalSoup.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/VSoup.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/MechanicalSoup.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/VSoup.qhc"
 
 devhelp:
 	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) $(BUILDDIR)/devhelp
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/MechanicalSoup"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/MechanicalSoup"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/VSoup"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/VSoup"
 	@echo "# devhelp"
 
 epub:

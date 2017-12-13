@@ -1,12 +1,13 @@
-.. MechanicalSoup documentation master file, created by
-   sphinx-quickstart on Sun Sep 14 18:44:39 2014.
+.. VSoup documentation master file
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to MechanicalSoup's documentation!
+Welcome to VSoup's documentation!
 ==========================================
 
 A Python library for automating interaction with websites. MechanicalSoup automatically stores and sends cookies, follows redirects, and can follow links and submit forms. It doesn't do Javascript.
+
+The VSoup project was branched from MechanicalSoup to fulfill my personal demands. It is not ready for public use but I will keep it open source. 
 
 MechanicalSoup was created by `M Hickford
 <https://github.com/hickford/>`__, who was a fond user of the
@@ -28,7 +29,7 @@ Contents:
 
    introduction
    tutorial
-   mechanicalsoup
+   vsoup
    faq
    external-resources
    ChangeLog

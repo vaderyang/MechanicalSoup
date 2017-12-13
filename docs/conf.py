@@ -22,7 +22,7 @@ import os
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.abspath('..'))
 
-import mechanicalsoup
+import vsoup
 
 # -- General configuration ------------------------------------------------
 
@@ -55,7 +55,7 @@ copyright = '2014'
 # built documents.
 #
 # The short X.Y version.
-version = mechanicalsoup.__version__
+version = vsoup.__version__
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -180,7 +180,7 @@ html_theme = 'default'
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'MechanicalSoupdoc'
+htmlhelp_basename = 'VSoupdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -200,7 +200,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'MechanicalSoup.tex', 'MechanicalSoup Documentation',
+  ('index', 'VSoup.tex', 'VSoup Documentation',
    '', 'manual'),
 ]
 
@@ -230,7 +230,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'mechanicalsoup', 'MechanicalSoup Documentation',
+    ('index', 'vsoup', 'VSoup Documentation',
      [''], 1)
 ]
 
@@ -244,8 +244,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'MechanicalSoup', 'MechanicalSoup Documentation',
-   '', 'MechanicalSoup', 'One line description of project.',
+  ('index', 'VSoup', 'VSoup Documentation',
+   '', 'VSoup', 'One line description of project.',
    'Miscellaneous'),
 ]
 

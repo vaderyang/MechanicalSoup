@@ -1,4 +1,4 @@
-MechanicalSoup tutorial
+VSoup tutorial
 =======================
 
 First contact, step by step
@@ -9,20 +9,20 @@ designed to test tools like MechanicalSoup.
 
 First, let's create a browser object::
 
-  >>> import mechanicalsoup
-  >>> browser = mechanicalsoup.StatefulBrowser()
+  >>> import vsoup
+  >>> browser = vsoup.StatefulBrowser()
 
 To customize the way to build a browser (change the user-agent, the
 HTML parser to use, the way to react to 404 Not Found errors, ...),
-see :func:`~mechanicalsoup.StatefulBrowser.__init__`.
+see :func:`~vsoup.StatefulBrowser.__init__`.
 
 Now, open the webpage we want::
 
   >>> browser.open("http://httpbin.org/")
   <Response [200]>
 
-The return value of :func:`~mechanicalsoup.StatefulBrowser.open` is an
-object of type requests.Response_. Actually, MechanicalSoup is using
+The return value of :func:`~vsoup.StatefulBrowser.open` is an
+object of type requests.Response_. Actually, VSoup is using
 the requests_ library to do the actual requests to the website, so
 there's no surprise that we're getting such object. In short, it
 contains the data and meta-data that the server sent us. You see the
@@ -43,9 +43,9 @@ Now, let's follow the link to ``/forms/post``::
   'http://httpbin.org/forms/post'
 
 We passed a regular expression ``"forms"``
-to :func:`~mechanicalsoup.StatefulBrowser.follow_link`, who followed
+to :func:`~vsoup.StatefulBrowser.follow_link`, who followed
 the link whose text matched this expression. There are many other ways
-to call :func:`~mechanicalsoup.StatefulBrowser.follow_link`, but we'll
+to call :func:`~vsoup.StatefulBrowser.follow_link`, but we'll
 get back to it.
 
 We're now visiting http://httpbin.org/forms/post, which contains a
@@ -59,7 +59,7 @@ form. Let's see the page content::
   ...
 
 Actually, the return type
-of :func:`~mechanicalsoup.StatefulBrowser().get_current_page` is
+of :func:`~vsoup.StatefulBrowser().get_current_page` is
 bs4.BeautifulSoup_. BeautifulSoup, aka bs4, is the second library used
 by Mechanicalsoup: it is an HTML manipulation library. You can now
 navigate in the tags of the pages using BeautifulSoup. For example, to
@@ -73,7 +73,7 @@ going to fill-in and submit::
 
   >>> browser.select_form('form[action="/post"]')
 
-The argument to :func:`~mechanicalsoup.StatefulBrowser.select_form` is
+The argument to :func:`~vsoup.StatefulBrowser.select_form` is
 a CSS selector. Here, we select an HTML tag named ``form`` having an
 attribute ``action`` whose value is ``"/post"``. Since there's only
 one form in the page, ``browser.select_form()`` would have done the
@@ -81,7 +81,7 @@ trick too.
 
 Now, give a value to fields in the form. First, what are the available
 fields? You can print a summary of the currently selected form
-with :func:`~mechanicalsoup.Form.print_summary()`::
+with :func:`~vsoup.Form.print_summary()`::
 
   >>> browser.get_current_form().print_summary()
   <input name="custname"/>
@@ -123,16 +123,16 @@ field::
   >>> browser["topping"] = ("bacon", "cheese")
 
 Actually, ``browser["..."] = "..."`` (i.e. calls
-to :func:`~mechanicalsoup.StatefulBrowser.__setitem__`) is just a
+to :func:`~vsoup.StatefulBrowser.__setitem__`) is just a
 helper to fill-in a form, but you can use any tool BeautifulSoup
-provides to modify the soup object, and MechanicalSoup will take care
+provides to modify the soup object, and VSoup will take care
 of submitting the form for you.
 
 Let's see what the filled-in form looks like::
 
   >>> browser.launch_browser()
 
-:func:`~mechanicalsoup.StatefulBrowser.launch_browser` will launch a
+:func:`~vsoup.StatefulBrowser.launch_browser` will launch a
 real web browser on the current page visited by our ``browser``
 object, including the changes we just made to the form (note that it
 does not open the real webpage, but creates a temporary file
@@ -146,7 +146,7 @@ Element" on a field will give you everything you need to manipulate
 this field (in particular the ``name`` and ``value`` attributes).
 
 It's also possible to check the content
-with :func:`~mechanicalsoup.Form.print_summary()` (that we already
+with :func:`~vsoup.Form.print_summary()` (that we already
 used to list the fields)::
 
   >>> browser.get_current_form().print_summary()
@@ -191,7 +191,7 @@ BeautifulSoup object, but we can still see the text it contains::
   ...
 
 To sum up, here is the complete example (`examples/expl_httpbin.py
-<https://github.com/MechanicalSoup/MechanicalSoup/blob/master/examples/expl_httpbin.py>`__):
+<https://github.com/vaderyang/VSoup/blob/master/examples/expl_httpbin.py>`__):
 
 .. literalinclude:: ../examples/expl_httpbin.py
 
@@ -202,21 +202,21 @@ To sum up, here is the complete example (`examples/expl_httpbin.py
 A more complete example: logging-in into GitHub
 -----------------------------------------------
 
-The simplest way to use MechanicalSoup is to use
-the :class:`~mechanicalsoup.StatefulBrowser` class (this example is
+The simplest way to use VSoup is to use
+the :class:`~vsoup.StatefulBrowser` class (this example is
 available as `examples/example.py
-<https://github.com/MechanicalSoup/MechanicalSoup/blob/master/examples/example.py>`__
-in MechanicalSoup's source code):
+<https://github.com/vaderyang/VSoup/blob/master/examples/example.py>`__
+in VSoup's source code):
 
 .. literalinclude:: ../examples/example.py
    :language: python
 
-Alternatively, one can use the :class:`~mechanicalsoup.Browser` class,
+Alternatively, one can use the :class:`~vsoup.Browser` class,
 which doesn't maintain a state from one call to another (i.e. the
 Browser itself doesn't remember which page you are visiting and what
 is its content, it's up to the caller to do so). This example is
 available as `examples/example_manual.py
-<https://github.com/MechanicalSoup/MechanicalSoup/blob/master/examples/example_manual.py>`__
+<https://github.com/vaderyang/VSoup/blob/master/examples/example_manual.py>`__
 in the source:
 
 .. literalinclude:: ../examples/example_manual.py
@@ -226,5 +226,5 @@ More examples
 ~~~~~~~~~~~~~
 
 For more examples, see the `examples
-<https://github.com/MechanicalSoup/MechanicalSoup/blob/master/examples/>`__
-directory in MechanicalSoup's source code.
+<https://github.com/vaderyang/VSoup/blob/master/examples/>`__
+directory in VSoup's source code.

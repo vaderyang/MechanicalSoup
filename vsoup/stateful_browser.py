@@ -165,7 +165,10 @@ class StatefulBrowser(Browser):
         return self.open(self.absolute_url(url), *args, **kwargs)
     def select_login_form(self):
         """Select a form which is likely to be a login form automaticlly.
-           Vader
+           
+           seek keywords of signin or so in forms and automaticly select the form
+           most likely to be a login form. It is more freindly version for :func:`select_form` 
+           with selectors
         """
         currentForm = None
         found_forms = self.get_current_page().select("form")

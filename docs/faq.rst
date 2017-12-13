@@ -1,8 +1,15 @@
 Frequently Asked Questions
 ==========================
 
-When to use MechanicalSoup?
+What is the relationship between MechnicalSoup and VSoup?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+VSoup is branched from MechnicalSoup. MechnicalSoup is a very good project,
+I branch from MechnicalSoup only because the modification is mainly for myself.
+The goal and mission is different from MechnicalSoup as a generic simulation a web
+browser with human behaviour. 
+
+When to use MechanicalSoup?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 MechanicalSoup is designed to simulate the behavior of a human using a
 web browser. Possible use-case include:
